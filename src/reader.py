@@ -32,13 +32,11 @@ with serial.Serial ('COM3', 115200) as s_port:
     s_port.write(b'\x03')
     
     while True:
-        try:
-            data_line = s_port.readline().strip().decode()
-            print (data_line)
-            if data_line == 'Stop Transmission':
+        data_line = s_port.readline().strip().decode()
+        print (data_line)
+        if data_line == 'Stop Transmission':
 #                 print('Interrupt has been seen')
-                raise KeyboardInterrupt
-        except:
             print('Program Terminated')
             break
+        
 
